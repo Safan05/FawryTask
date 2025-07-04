@@ -29,6 +29,12 @@ abstract class Product {
     public double getPrice() {
         return price;
     }
+    public void decreaseQuantity(int q) {
+        if (quantity < q) {
+            throw new RuntimeException("Not enough quantity available for " + name);
+        }
+        quantity -= q;
+    }
     public boolean isAvailable(int q) {
         return quantity >= q;
     }

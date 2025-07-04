@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.management.RuntimeErrorException;
-
 class Item {
     public int quantity;
     public Product product;
@@ -39,6 +37,7 @@ public class Cart {
         if (!product.isAvailable(quantity)) {
             throw new RuntimeException("Requested quantity of product "+product.getName()+" is not available.");
         }
+        product.decreaseQuantity(quantity);
         items.add(new Item(product, quantity));
     }
     // decrement item from cart
